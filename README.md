@@ -22,8 +22,9 @@ Result Homework for month 1 lection 1
 `vagrant cloud auth login ...`
 2. Загружаем (публикуем) box-образ \
 `vagrant cloud publish --release behlc/deb10-xanmod-kernel 1.0 virtualbox debianBox.box`
+2'. (Альтернатива) Загружаем (публикуем) box-образ с помощью web-интерфейса
 
-Vagrant Файл с результатом - **Vagrantfile.repo**
+Vagrant Файл с результатом - **Vagrantfile.xanmod**
 **P.S. SSH вход по ключу может не работать, входить пользователем vagrant, пароль vagrant.**
 
 ## Сборка ядра из исходного кода
@@ -44,3 +45,19 @@ cp /boot/config-5.10.131-rt72-xanmod1 ./.config
 `make menuconfig`
 5. Запустил сборку \
    `make -j 2`
+6. Устанавливаем (копируем в нужное место) собранные модули ядра \
+`make modules_install`
+7. Собираем сжатый образ ядра \
+`make bzImage`
+8. Устанавливаем (копируем в нужно место) ядро со служебными файлами \
+`make install`
+9. Правим grub (в моём случае, его поправили скрипты при установке ядра)
+10. Подключил к ВМ ISO с VirtualBox Additions для версии 6.1.40 (в гостевой ВМ установлена данная версия)
+и скопируем отуда файл VBoxLinuxAdditions.run
+11. Запустил скрипт на выполнение. В процессе его выполнения будут пересобаны модули Virtual Box Additions под текущую версию ядра \
+`./VBoxLinuxAdditions.run`
+12. Проверяем возможность монтировать расшаренные папки (в хостовой системе в настройках ВМ создана расшаренная папка **<Share_name>**) \
+`mount.vboxsf <Share_name> /mnt`
+
+Vagrant Файл с результатом - **Vagrantfile.xanmod**
+**P.S. SSH вход по ключу может не работать, входить пользователем vagrant, пароль vagrant.sourcecode**
