@@ -24,7 +24,7 @@ Result Homework for month 1 lection 1
 `vagrant cloud publish --release behlc/deb10-xanmod-kernel 1.0 virtualbox debianBox.box`
 2'. (Альтернатива) Загружаем (публикуем) box-образ с помощью web-интерфейса
 
-Vagrant Файл с результатом - **Vagrantfile.xanmod**
+Vagrant Файл с результатом - **Vagrantfile.xanmod** \
 **P.S. SSH вход по ключу может не работать, входить пользователем vagrant, пароль vagrant.**
 
 ## Сборка ядра из исходного кода
@@ -60,5 +60,5 @@ cp /boot/config-5.10.131-rt72-xanmod1 ./.config
 `mount.vboxsf <Share_name> /mnt`
 13. Этап создания box и его загрузки в Vagrant Cloud аналогичен действиям приведенным в разделе **Обновление ядра из сторннего репозитория**  
 
-Vagrant Файл с результатом - **Vagrantfile.sourcecode**
+Vagrant Файл с результатом - **Vagrantfile.sourcecode** \
 **P.S. SSH вход по ключу может не работать, входить пользователем vagrant, пароль vagrant**
