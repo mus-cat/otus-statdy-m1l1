@@ -11,13 +11,13 @@ Result Homework for month 1 lection 1
 5. Установили ядро 5.10.131-rt72-xanmod1 \
    `apt install linux-image-5.10.131-rt72-xanmod1`
    
-## Создание образа (box) для vagrant
+### Создание образа (box) для vagrant
 1. Получаем имя (**Имя_ВМ**) интересующей нас ВМ в VirtualBox \
 `VBoxManager list vms`
 2. Создаем box-образ из ВМ \
 `vagrant package --base <Имя_ВМ> --output debianBox.box`
 
-## Загрузка образа в vagrant Cloud:
+### Загрузка образа в vagrant Cloud:
 1. Вход на Vagrant Cloud \
 `vagrant cloud auth login ...`
 2. Загружаем (публикуем) box-образ \
@@ -58,6 +58,7 @@ cp /boot/config-5.10.131-rt72-xanmod1 ./.config
 `./VBoxLinuxAdditions.run`
 12. Проверяем возможность монтировать расшаренные папки (в хостовой системе в настройках ВМ создана расшаренная папка **<Share_name>**) \
 `mount.vboxsf <Share_name> /mnt`
+13. Этап создания box и его загрузки в Vagrant Cloud аналогичен действиям приведенным в разделе **Обновление ядра из сторннего репозитория**  
 
-Vagrant Файл с результатом - **Vagrantfile.xanmod**
-**P.S. SSH вход по ключу может не работать, входить пользователем vagrant, пароль vagrant.sourcecode**
+Vagrant Файл с результатом - **Vagrantfile.sourcecode**
+**P.S. SSH вход по ключу может не работать, входить пользователем vagrant, пароль vagrant**
